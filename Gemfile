@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'chronic_duration', '0.9.6'
 gem 'gruff', '0.3.6'
 gem 'delayed_job', '2.1.4'
-gem 'rmagick', '2.13.1'
+gem 'rmagick', '2.13.1', :require => false
 
 # Use unicorn as the web server
 # gem 'unicorn'
