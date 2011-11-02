@@ -4,7 +4,7 @@ class CreateWaitTimes < ActiveRecord::Migration
       t.integer   :duration
       t.datetime  :reported_at
       t.integer   :branch_id
-      t.string    :type
+      t.string    :kind
       t.timestamps
     end
   end
