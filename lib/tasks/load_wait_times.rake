@@ -7,7 +7,7 @@ def valid_line?(line)
   line =~ /^[A-Z].*2011$/ && !(line =~ /Technical difficulties/)
 end
 
-desc "Load waitkind times from a text file"
+desc "Load wait times from a text file"
 task :load_wait_times, [:filename] => [:environment] do |t, args|
   if args[:filename] == nil
     puts "Usage: rake load_wait_times['wait_times.txt']" 
