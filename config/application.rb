@@ -7,6 +7,7 @@ require 'rails/all'
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 require 'rmv_duration'
+require 'extensions'
 
 module Rmvwait
   class Application < Rails::Application

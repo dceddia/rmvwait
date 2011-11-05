@@ -3,6 +3,7 @@ Rmvwait::Application.routes.draw do
   # first created -> highest priority.
 
   match 'branch/:name' => 'branch#view'
+  match 'branch/:name/graph' => 'branch#graph'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
