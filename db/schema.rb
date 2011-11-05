@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111101024229) do
+ActiveRecord::Schema.define(:version => 20111105021628) do
 
   create_table "branches", :force => true do |t|
     t.string   "name"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "human_name"
   end
 
   create_table "delayed_jobs", :force => true do |t|

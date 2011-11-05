@@ -1,37 +1,38 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
 
-Branch.create(:name => 'Attleboro', :active => true)
-Branch.create(:name => 'Boston', :active => true)
-Branch.create(:name => 'Braintree', :active => true)
-Branch.create(:name => 'Brockton', :active => true)
-Branch.create(:name => 'Chicopee', :active => true)
-Branch.create(:name => 'Danvers', :active => true)
-Branch.create(:name => 'Easthampton', :active => true)
-Branch.create(:name => 'Fall River', :active => true)
-Branch.create(:name => 'Greenfield', :active => true)
-Branch.create(:name => 'Haverhill', :active => true)
-Branch.create(:name => 'Lawrence', :active => true)
-Branch.create(:name => 'Leominster', :active => true)
-Branch.create(:name => 'Lowell', :active => true)
-Branch.create(:name => 'Martha\'s Vineyard', :active => true)
-Branch.create(:name => 'Milford', :active => true)
-Branch.create(:name => 'Nantucket', :active => true)
-Branch.create(:name => 'Natick', :active => true)
-Branch.create(:name => 'New Bedford', :active => true)
-Branch.create(:name => 'North Adams', :active => true)
-Branch.create(:name => 'Pittsfield', :active => true)
-Branch.create(:name => 'Plymouth', :active => true)
-Branch.create(:name => 'Revere', :active => true)
-Branch.create(:name => 'Roslindale', :active => true)
-Branch.create(:name => 'South Yarmouth', :active => true)
-Branch.create(:name => 'Springfield', :active => true)
-Branch.create(:name => 'Taunton', :active => true)
-Branch.create(:name => 'Watertown', :active => true)
-Branch.create(:name => 'Wilmington', :active => true)
-Branch.create(:name => 'Worcester', :active => true)
+names = [
+  'Attleboro',
+  'Boston',
+  'Braintree',
+  'Brockton',
+  'Chicopee',
+  'Danvers',
+  'Easthampton',
+  'Fall River',
+  'Greenfield',
+  'Haverhill',
+  'Lawrence',
+  'Leominster',
+  'Lowell',
+  'Martha\'s Vineyard',
+  'Milford',
+  'Nantucket',
+  'Natick',
+  'New Bedford',
+  'North Adams',
+  'Pittsfield',
+  'Plymouth',
+  'Revere',
+  'Roslindale',
+  'South Yarmouth',
+  'Springfield',
+  'Taunton',
+  'Watertown',
+  'Wilmington',
+  'Worcester']
+  
+names.each do |name|
+  lower_name = name.gsub(/[^A-Za-z ]/, '').gsub(/ /, '_').downcase
+  Branch.create(:name => name, :human_name => name, :active => true)
+end
