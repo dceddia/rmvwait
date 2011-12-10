@@ -2,9 +2,18 @@
 #  Copyright (c) 2011. All rights reserved.
 
 require 'chronic_duration'
+require 'activerecord-import'
 
 def valid_line?(line)
   line =~ /^[A-Z].*2011$/ && !(line =~ /Technical difficulties/)
+end
+
+def save_wait_time(branch, duration, reported_at, kind)
+  wait_time = WaitTime.create(:branch => branch,
+                              :duration => duration,
+                              :reported_at => reported_at,
+                              :kind => kind)
+  raise unless wait_time.persisted?
 end
 
 desc "Load wait times from a text file"
@@ -14,47 +23,46 @@ task :load_wait_times, [:filename] => [:environment] do |t, args|
     exit
   end
   
-  # Pull all the valid lines from the file
-  times = []
-  File.open(args[:filename], 'r') do |f| 
-    lines = f.readlines
-    puts "Read #{lines.length} lines"
-    lines.each do |line| 
-      next unless valid_line?(line)
-      split_line = line.split('|')
-      next unless split_line.length == 5
-      branch_name, licensing_wait, registration_wait, reported_time, retrieved_at = split_line
+  branch_cache = {}
+  branch = nil
+  i = 0
+  wait_times = []
+  IO.foreach(args[:filename]) do |line|
+    next unless valid_line?(line)
+    split_line = line.split('|')
+    next unless split_line.length == 5
+    branch_name, licensing_wait, registration_wait, reported_time, retrieved_at = split_line
 
-      licensing_duration = RMVDuration.parse(licensing_wait)
-      registration_duration = RMVDuration.parse(registration_wait)
-      reported_time = Time.parse(reported_time)
-      reported_at = DateTime.parse(retrieved_at).change(:hour => reported_time.hour, 
-                                                        :min => reported_time.min)
-      
-      #puts "#{branch_name} | #{licensing_duration} | #{registration_duration} | #{reported_at}"
-      times << [branch_name, licensing_duration, reported_at, :licensing]
-      times << [branch_name, registration_duration, reported_at, :registration]
+    licensing_duration = RMVDuration.parse(licensing_wait)
+    registration_duration = RMVDuration.parse(registration_wait)
+    reported_time = Time.parse(reported_time)
+    reported_at = Time.parse(retrieved_at).change(:hour => reported_time.hour, 
+                                                  :min => reported_time.min)
+
+    if branch_cache.include?(branch_name)
+      branch = branch_cache[branch_name]
+    else
+      branch = Branch.where(:human_name => branch_name).first
+      branch_cache[branch_name] = branch
     end
-  end
-  
-  puts "Loaded #{times.size} wait times"
+      
+    #wait_times << {:branch => branch, :duration => licensing_duration, :reported_at => reported_at, :kind => :licensing}
+    #wait_times << {:branch => branch, :duration => licensing_duration, :reported_at => reported_at, :kind => :licensing}
 
-  # sort the times by branch name to make it faster
-  times.sort! { |a, b| a[0] <=> b[0] }
-  
-  puts "Done sorting wait times"
-  
-  exit if times.length == 0
-  
-  # add the times to the database
-  branch = Branch.where(:name => times[0][0]).first
-  times.each do |t|
-    branch_name, duration, reported_at, kind = t
-    branch = Branch.where(:name => branch_name).first if branch.name != branch_name
-    wait_time = WaitTime.create(:branch => branch,
-                                :duration => duration,
-                                :reported_at => reported_at,
-                                :kind => kind)
-    raise unless wait_time.persisted?
+    wait_times << WaitTime.new(:branch => branch,
+                               :duration => licensing_duration,
+                               :reported_at => reported_at,
+                               :kind => :licensing)
+    wait_times << WaitTime.new(:branch => branch,
+                               :duration => registration_duration,
+                               :reported_at => reported_at,
+                               :kind => :registration)
+
+    if (i % 1000) == 0
+      WaitTime.import wait_times
+      wait_times = []
+      puts "Loaded #{i}"
+    end
+    i += 1
   end
 end
