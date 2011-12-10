@@ -46,9 +46,10 @@ task :load_wait_times, [:filename] => [:environment] do |t, args|
       branch_cache[branch_name] = branch
     end
       
-    #wait_times << {:branch => branch, :duration => licensing_duration, :reported_at => reported_at, :kind => :licensing}
-    #wait_times << {:branch => branch, :duration => licensing_duration, :reported_at => reported_at, :kind => :licensing}
-
+    column_names = [:branch_id, :duration, :reported_at, :kind]
+    wait_times << [branch.object_id, licensing_duration, reported_at, :licensing]
+    wait_times << [branch.object_id, registration_duration, reported_at, :registration]
+=begin
     wait_times << WaitTime.new(:branch => branch,
                                :duration => licensing_duration,
                                :reported_at => reported_at,
@@ -57,9 +58,9 @@ task :load_wait_times, [:filename] => [:environment] do |t, args|
                                :duration => registration_duration,
                                :reported_at => reported_at,
                                :kind => :registration)
-
+=end
     if (i % 1000) == 0
-      WaitTime.import wait_times
+      WaitTime.import column_names, wait_times
       wait_times = []
       puts "Loaded #{i}"
     end
