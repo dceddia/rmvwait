@@ -34,5 +34,5 @@ names = [
   
 names.each do |name|
   lower_name = name.gsub(/[^A-Za-z ]/, '').gsub(/ /, '_').downcase
-  Branch.create(:name => name, :human_name => name, :active => true)
+  Branch.create(:name => lower_name, :human_name => name, :active => true)
 end
