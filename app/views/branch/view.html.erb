@@ -1,2 +1,8 @@
 <p>hello <%= @branch.name %>!</p>
 <p>Your branch has <%= @branch.wait_times.length %> wait times</p>
+<p>Choose a date range to view a graph:</p>
+<%= form_tag("#{@branch.name}/graph", :method => "get") do |f| %>
+  Start date:<%= select_date Date.today, :prefix => :start_date %><br/>
+  End date:<%= select_date Date.today, :prefix => :end_date %><br/>
+  <%= submit_tag "Graph!" %>
+<% end %>
