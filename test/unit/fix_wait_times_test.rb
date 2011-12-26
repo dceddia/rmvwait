@@ -45,4 +45,13 @@ class FixWaitTimesTest < ActiveSupport::TestCase
     assert_equal false, f.should_discard?(closed_line)
     assert_equal false, f.should_discard?(good_line)
   end
+  
+  test "DiscardBadStatusLine filter" do
+    f = WaitTimeFilters::DiscardBadStatusLine.new
+    assert f.should_discard?(tech_difficulties_line)
+    assert f.should_discard?(closed_line)
+    
+    assert_equal false, f.should_discard?(good_line)
+    assert_equal false, f.should_discard?(bad_line) # DiscardMalformedLine should handle this
+  end
 end
