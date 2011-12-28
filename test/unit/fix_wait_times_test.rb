@@ -27,7 +27,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
 
   def good_line_later
-    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:45 PM|Wed Aug 31 15:48:59 -0400 2011"
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:47 PM|Wed Aug 31 15:48:59 -0400 2011"
   end
     
   def too_far_past_line
@@ -39,11 +39,11 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
 
   def not_too_far_past_line
-    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 15:10:00 -0400 2011"
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:10 PM|Wed Aug 31 15:20:00 -0400 2011"
   end
   
   def not_too_far_future_line
-    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 14:59:00 -0400 2011"
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:15 PM|Wed Aug 31 15:14:00 -0400 2011"
   end
   
   def line_with_n_fields(n)
@@ -124,7 +124,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
   
   test "Fix October problems" do
-    f = WaitTimeModifiers::FixOct17_18_19_20_24.new
+    f = WaitTimeFilters::FixOct17_18_19_20_24.new
     october_examples.each do |ex|
       t1 = Time.parse(ex.split("|")[3])
       fixed_ex = f.modify(ex)
@@ -134,7 +134,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
 
   test "Don't fix anything but problematic October dates" do
-    f = WaitTimeModifiers::FixOct17_18_19_20_24.new
+    f = WaitTimeFilters::FixOct17_18_19_20_24.new
     examples = []
     # one year later
     examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2012, 10, 17, 10, 30, 00, Rational(4,24)).to_s}"
@@ -153,7 +153,31 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   
   test "Fix some wait times" do
     f = WaitTimeFixer.new
+    
+    # Normal operation
     assert_equal good_line, f.parse_line(good_line)
-    assert_equal nil, f.parse_line(bad_line)
+    
+    # Throw out bad lines
+    assert_nil f.parse_line(bad_line)
+
+    # Throw out duplicates
+    assert_nil f.parse_line(good_line)
+  
+    # Try a bad October time
+    dt = DateTime.new(2011, 10, 17, 10, 30, 00, Rational(4, 24)).strftime("%a %b %d %H:%M:%S %Z %Y")
+    oct_orig = "Boston|1 hour|1 hour|5:24 AM|#{dt}"
+    oct_fixed = "Boston|1 hour|1 hour|10:24 AM|#{dt}"
+    assert_equal oct_fixed, f.parse_line(oct_orig)
+
+    # Try everything else
+    assert_nil f.parse_line(tech_difficulties_line)
+    assert_nil f.parse_line(closed_line)
+    assert_equal good_line_elsewhere, f.parse_line(good_line_elsewhere)
+    assert_equal good_line_earlier, f.parse_line(good_line_earlier)
+    assert_equal good_line_later, f.parse_line(good_line_later)
+    assert_nil f.parse_line(too_far_past_line)
+    assert_nil f.parse_line(too_far_future_line)
+    assert_equal not_too_far_past_line, f.parse_line(not_too_far_past_line)
+    assert_equal not_too_far_future_line, f.parse_line(not_too_far_future_line)
   end
 end

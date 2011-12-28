@@ -13,19 +13,29 @@ class RecordStore
 end
 
 module WaitTimeFilters
-  class DiscardMalformedLine
+  class DiscardFilter
+    def modify(line)
+      should_discard?(line) ? nil : line
+    end
+    
+    def should_discard?(line)
+      false
+    end
+  end
+  
+  class DiscardMalformedLine < DiscardFilter
     def should_discard?(line)
       (line !~ /^[A-Z].*20\d\d$/ || line.split("|").length != 5) ? true : false
     end
   end
 
-  class DiscardBadStatusLine
+  class DiscardBadStatusLine < DiscardFilter
     def should_discard?(line)
       (line =~ /Technical difficulties/ || line =~ /Closed/) ? true : false
     end
   end
   
-  class DiscardSameAsLast
+  class DiscardSameAsLast < DiscardFilter
     def initialize
       @records = RecordStore.new
     end
@@ -38,7 +48,7 @@ module WaitTimeFilters
     end
   end
 
-  class DiscardFutureAndPastReports
+  class DiscardFutureAndPastReports < DiscardFilter
     MaxAge = 600 # seconds
     MaxFuture = -60 # seconds in the future, always negative
     def should_discard?(line)
@@ -64,9 +74,7 @@ module WaitTimeFilters
       report_age < MaxFuture || report_age > MaxAge
     end
   end
-end
-
-module WaitTimeModifiers
+  
   class FixOct17_18_19_20_24
     def modify(line)
       branch, lic, reg, reported_time, retrieved_time = line.split("|")
@@ -91,15 +99,27 @@ class WaitTimeFixer
     @filters << WaitTimeFilters::DiscardMalformedLine.new \
              << WaitTimeFilters::DiscardBadStatusLine.new \
              << WaitTimeFilters::DiscardSameAsLast.new \
+             << WaitTimeFilters::FixOct17_18_19_20_24.new \
              << WaitTimeFilters::DiscardFutureAndPastReports.new
-
-    @modifiers = []
-    @modifiers << WaitTimeModifiers::FixOct17_18_19_20_24.new    
   end
   
   def parse_line(line)
-    return nil if @filters.any? { |f| f.should_discard?(line) }
-    @modifiers.each { |m| line = m.modify(line) }
+    orig_line = line.dup
+    @filters.each do |f| 
+      line = f.modify(line)
+      
+      if line.nil?
+        return nil 
+      end
+    end
     line
+  end
+  
+  def parse_file(filename)
+    File.new(filename).readlines.each do |line|
+      line.strip!
+      result = f.parse_line(line)
+      puts result if result
+    end
   end
 end
