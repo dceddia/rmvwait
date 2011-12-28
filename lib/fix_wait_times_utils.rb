@@ -49,7 +49,7 @@ module WaitTimeFilters
   end
 
   class DiscardFutureAndPastReports < DiscardFilter
-    MaxAge = 600 # seconds
+    MaxAge = 1200 # seconds
     MaxFuture = -60 # seconds in the future, always negative
     def should_discard?(line)
       branch, lic, reg, reported_time, retrieved_time = line.split("|")
@@ -118,8 +118,8 @@ class WaitTimeFixer
   def parse_file(filename)
     File.new(filename).readlines.each do |line|
       line.strip!
-      result = f.parse_line(line)
-      puts result if result
+      result = parse_line(line)
+      result ? puts(result) : $stderr.puts(line)
     end
   end
 end

@@ -31,7 +31,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
     
   def too_far_past_line
-    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 15:10:01 -0400 2011"
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 15:20:01 -0400 2011"
   end
   
   def too_far_future_line
@@ -39,7 +39,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
 
   def not_too_far_past_line
-    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:10 PM|Wed Aug 31 15:20:00 -0400 2011"
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:10 PM|Wed Aug 31 15:30:00 -0400 2011"
   end
   
   def not_too_far_future_line
@@ -163,12 +163,17 @@ class FixWaitTimesTest < ActiveSupport::TestCase
     # Throw out duplicates
     assert_nil f.parse_line(good_line)
   
-    # Try a bad October time
-    dt = DateTime.new(2011, 10, 17, 10, 30, 00, Rational(4, 24)).strftime("%a %b %d %H:%M:%S %Z %Y")
-    oct_orig = "Boston|1 hour|1 hour|5:24 AM|#{dt}"
-    oct_fixed = "Boston|1 hour|1 hour|10:24 AM|#{dt}"
+    # Try a real October time
+    oct_orig = "Worcester|No wait time|6 minutes, 44 seconds|2:57 AM|Mon Oct 24 08:10:09 -0400 2011"
+    oct_fixed = "Worcester|No wait time|6 minutes, 44 seconds|7:57 AM|Mon Oct 24 08:10:09 -0400 2011"
     assert_equal oct_fixed, f.parse_line(oct_orig)
+  
 
+    # Try another real October time
+    oct_orig = "Brockton|No wait time|No wait time|3:19 AM|Wed Oct 19 08:32:15 -0400 2011"
+    oct_fixed = "Brockton|No wait time|No wait time|8:19 AM|Wed Oct 19 08:32:15 -0400 2011"
+    assert_equal oct_fixed, f.parse_line(oct_orig)
+    
     # Try everything else
     assert_nil f.parse_line(tech_difficulties_line)
     assert_nil f.parse_line(closed_line)
