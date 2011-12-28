@@ -13,12 +13,18 @@ class RecordStore
 end
 
 module WaitTimeFilters
-  class DiscardInvalidLine
+  class DiscardMalformedLine
     def should_discard?(line)
-      line !~ /^[A-Z].*20\d\d$/ || line =~ /Technical difficulties/ || line.split("|").length != 5
+      (line !~ /^[A-Z].*20\d\d$/ || line.split("|").length != 5) ? true : false
     end
   end
 
+  class DiscardBadStatusLine
+    def should_discard?(line)
+      (line =~ /Technical difficulties/ || line =~ /Closed/) ? true : false
+    end
+  end
+  
   class DiscardSameAsLast
     def initialize
       @records = RecordStore.new
@@ -32,7 +38,7 @@ module WaitTimeFilters
     end
   end
 
-  class DiscardFutureReports
+  class DiscardFutureAndPastReports
     MaxAge = 600 # seconds
     MaxFuture = -60 # seconds in the future, always negative
     def should_discard?(line)
@@ -55,7 +61,7 @@ module WaitTimeFilters
         end
       end
 =end
-      report_age < MaxFuture
+      report_age < MaxFuture || report_age > MaxAge
     end
   end
 end
@@ -76,9 +82,24 @@ module WaitTimeModifiers
       #puts "'#{line}' => '#{new_line}'"
       return new_line
     end
+  end
+end
 
-    def modify!(line)
-      line = modify(line)
-    end
+class WaitTimeFixer
+  def initialize
+    @filters = []
+    @filters << WaitTimeFilters::DiscardMalformedLine.new \
+             << WaitTimeFilters::DiscardBadStatusLine.new \
+             << WaitTimeFilters::DiscardSameAsLast.new \
+             << WaitTimeFilters::DiscardFutureAndPastReports.new
+
+    @modifiers = []
+    @modifiers << WaitTimeModifiers::FixOct17_18_19_20_24.new    
+  end
+  
+  def parse_line(line)
+    return nil if @filters.any? { |f| f.should_discard?(line) }
+    @modifiers.each { |m| line = m.modify(line) }
+    line
   end
 end

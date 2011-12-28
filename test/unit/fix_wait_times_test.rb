@@ -7,7 +7,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
  
   def tech_difficulties_line
-    "Boston|Technical difficulties|Technical difficulties|3:46 PM|Wed Aug 31 15:48:59 -0400 2011"
+    "Boston|Technical difficulties|Technical difficulties|3:46 PM|Wed Aug 31 15:52:59 -0400 2011"
   end
 
   def closed_line
@@ -17,13 +17,33 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   def good_line
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:46 PM|Wed Aug 31 15:48:59 -0400 2011"
   end
+  
+  def good_line_elsewhere
+    "Boston|5 minutes, 34 seconds|13 minutes, 8 seconds|3:46 PM|Wed Aug 31 15:48:59 -0400 2011"
+  end
+   
+  def good_line_earlier
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:45 PM|Wed Aug 31 15:48:59 -0400 2011"
+  end
 
+  def good_line_later
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:45 PM|Wed Aug 31 15:48:59 -0400 2011"
+  end
+    
   def too_far_past_line
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 15:10:01 -0400 2011"
   end
   
   def too_far_future_line
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 14:58:59 -0400 2011"
+  end
+
+  def not_too_far_past_line
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 15:10:00 -0400 2011"
+  end
+  
+  def not_too_far_future_line
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:00 PM|Wed Aug 31 14:59:00 -0400 2011"
   end
   
   def line_with_n_fields(n)
@@ -53,5 +73,87 @@ class FixWaitTimesTest < ActiveSupport::TestCase
     
     assert_equal false, f.should_discard?(good_line)
     assert_equal false, f.should_discard?(bad_line) # DiscardMalformedLine should handle this
+  end
+  
+  test "DiscardSameAsLast filter simple duplicate" do
+    f = WaitTimeFilters::DiscardSameAsLast.new
+    
+    assert_equal false, f.should_discard?(good_line)
+    assert_equal true, f.should_discard?(good_line)
+  end
+
+  test "DiscardSameAsLast filter non-duplicate" do
+    f = WaitTimeFilters::DiscardSameAsLast.new
+    
+    assert_equal false, f.should_discard?(good_line)
+    assert_equal false, f.should_discard?(good_line_elsewhere)
+  end
+  
+  test "DiscardSameAsLast filter same branch, different time" do
+    f = WaitTimeFilters::DiscardSameAsLast.new
+    
+    assert_equal false, f.should_discard?(good_line)
+    assert_equal false, f.should_discard?(good_line_earlier)
+    assert_equal false, f.should_discard?(good_line)
+  end
+
+  test "DiscardSameAsLast filter different branch, same time" do
+    f = WaitTimeFilters::DiscardSameAsLast.new
+    
+    assert_equal false, f.should_discard?(good_line)
+    assert_equal false, f.should_discard?(good_line_elsewhere)
+    assert_equal true, f.should_discard?(good_line)
+  end
+  
+  test "DiscardFutureAndPastReports filter" do
+    f = WaitTimeFilters::DiscardFutureAndPastReports.new
+    
+    assert_equal false, f.should_discard?(good_line)
+    assert f.should_discard?(too_far_future_line)
+    assert f.should_discard?(too_far_past_line)
+  end
+  
+  def october_examples
+    lines = []
+    days = [17, 18, 19, 20, 24]
+    days.each do |day|
+      date_string = DateTime.new(2011, 10, day, 10, 30, 00, Rational(4, 24)).to_s
+      lines << "Boston|1 hour|1 hour|5:24 AM|#{date_string}"
+    end
+    lines
+  end
+  
+  test "Fix October problems" do
+    f = WaitTimeModifiers::FixOct17_18_19_20_24.new
+    october_examples.each do |ex|
+      t1 = Time.parse(ex.split("|")[3])
+      fixed_ex = f.modify(ex)
+      t2 = Time.parse(fixed_ex.split("|")[3])
+      assert_in_delta 5.0 * 60.0 * 60.0, (t2 - t1), 0.001
+    end
+  end
+
+  test "Don't fix anything but problematic October dates" do
+    f = WaitTimeModifiers::FixOct17_18_19_20_24.new
+    examples = []
+    # one year later
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2012, 10, 17, 10, 30, 00, Rational(4,24)).to_s}"
+    # one year before
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2010, 10, 17, 10, 30, 00, Rational(4,24)).to_s}"
+    # unaffected days
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2011, 10, 16, 10, 30, 00, Rational(4,24)).to_s}"
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2011, 10, 21, 10, 30, 00, Rational(4,24)).to_s}"
+    
+    examples.each do |ex|
+      t1 = Time.parse(ex.split("|")[3])
+      t2 = Time.parse(f.modify(ex).split("|")[3])
+      assert_equal t1, t2
+    end
+  end
+  
+  test "Fix some wait times" do
+    f = WaitTimeFixer.new
+    assert_equal good_line, f.parse_line(good_line)
+    assert_equal nil, f.parse_line(bad_line)
   end
 end
