@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'fix_wait_times_utils'
 
 class FixWaitTimesTest < ActiveSupport::TestCase
   def bad_line
@@ -56,7 +55,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
   
   test "DiscardMalformedLine filter" do
-    f = WaitTimeFilters::DiscardMalformedLine.new
+    f = WaitTimeUtils::WaitTimeFilters::DiscardMalformedLine.new
     assert f.should_discard?(bad_line)
     (1..4).each { |n| assert f.should_discard?(line_with_n_fields(n)) }
     (6..10).each { |n| assert f.should_discard?(line_with_n_fields(n)) }
@@ -67,7 +66,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
   
   test "DiscardBadStatusLine filter" do
-    f = WaitTimeFilters::DiscardBadStatusLine.new
+    f = WaitTimeUtils::WaitTimeFilters::DiscardBadStatusLine.new
     assert f.should_discard?(tech_difficulties_line)
     assert f.should_discard?(closed_line)
     
@@ -76,21 +75,21 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
   
   test "DiscardSameAsLast filter simple duplicate" do
-    f = WaitTimeFilters::DiscardSameAsLast.new
+    f = WaitTimeUtils::WaitTimeFilters::DiscardSameAsLast.new
     
     assert_equal false, f.should_discard?(good_line)
     assert_equal true, f.should_discard?(good_line)
   end
 
   test "DiscardSameAsLast filter non-duplicate" do
-    f = WaitTimeFilters::DiscardSameAsLast.new
+    f = WaitTimeUtils::WaitTimeFilters::DiscardSameAsLast.new
     
     assert_equal false, f.should_discard?(good_line)
     assert_equal false, f.should_discard?(good_line_elsewhere)
   end
   
   test "DiscardSameAsLast filter same branch, different time" do
-    f = WaitTimeFilters::DiscardSameAsLast.new
+    f = WaitTimeUtils::WaitTimeFilters::DiscardSameAsLast.new
     
     assert_equal false, f.should_discard?(good_line)
     assert_equal false, f.should_discard?(good_line_earlier)
@@ -98,7 +97,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
 
   test "DiscardSameAsLast filter different branch, same time" do
-    f = WaitTimeFilters::DiscardSameAsLast.new
+    f = WaitTimeUtils::WaitTimeFilters::DiscardSameAsLast.new
     
     assert_equal false, f.should_discard?(good_line)
     assert_equal false, f.should_discard?(good_line_elsewhere)
@@ -106,7 +105,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
   
   test "DiscardFutureAndPastReports filter" do
-    f = WaitTimeFilters::DiscardFutureAndPastReports.new
+    f = WaitTimeUtils::WaitTimeFilters::DiscardFutureAndPastReports.new
     
     assert_equal false, f.should_discard?(good_line)
     assert f.should_discard?(too_far_future_line)
@@ -124,7 +123,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
   
   test "Fix October problems" do
-    f = WaitTimeFilters::FixOct17_18_19_20_24.new
+    f = WaitTimeUtils::WaitTimeFilters::FixOct17_18_19_20_24.new
     october_examples.each do |ex|
       t1 = Time.parse(ex.split("|")[3])
       fixed_ex = f.modify(ex)
@@ -134,7 +133,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
 
   test "Don't fix anything but problematic October dates" do
-    f = WaitTimeFilters::FixOct17_18_19_20_24.new
+    f = WaitTimeUtils::WaitTimeFilters::FixOct17_18_19_20_24.new
     examples = []
     # one year later
     examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2012, 10, 17, 10, 30, 00, Rational(4,24)).to_s}"
@@ -152,7 +151,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   end
   
   test "Fix some wait times" do
-    f = WaitTimeFixer.new
+    f = WaitTimeUtils::WaitTimeFixer.new
     
     # Normal operation
     assert_equal good_line, f.parse_line(good_line)
