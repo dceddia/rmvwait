@@ -1,11 +1,16 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.1.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+
+# New for rails 3.1.3
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
 
 gem 'chronic_duration', '0.9.6'
 gem 'gruff', '0.3.6'
