@@ -3,7 +3,7 @@ class BranchController < ApplicationController
     @branch = Branch.find_by_name(params[:name])
   end
   
-  def graph
+  def test_graph
     require 'gruff'
     @branch = Branch.find_by_name(params[:name])
     
@@ -20,6 +20,23 @@ class BranchController < ApplicationController
     g.data("Registration", registration)
     g.data("Licensing", licensing)
     #g.data("Reg.Times", registration_times)
+    filename = "registration.png"
+    g.write(filename)
+    send_file filename, :type => 'image/png', :disposition => 'inline'
+  end
+
+  def graph
+    require 'gruff'
+    @branch = Branch.find_by_name(params[:name])
+    
+    licensing, registration = @branch.wait_times.where("reported_at >= ? AND reported_at <= ?", 
+      Date.from_param(params[:start_date]),
+      Date.from_param(params[:end_date]))
+
+    g = Gruff::Line.new
+    g.title = "#{@branch.human_name} Wait Times (requested date)"
+    g.data("Registration", registration)
+    g.data("Licensing", licensing)
     filename = "registration.png"
     g.write(filename)
     send_file filename, :type => 'image/png', :disposition => 'inline'
