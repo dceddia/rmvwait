@@ -39,6 +39,6 @@ gem "activerecord-import", ">= 0.2.0"
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'rspec'
-  gem 'spork'
-  gem 'spork-testunit'
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork-testunit', :git => 'https://github.com/sporkrb/spork-testunit'
 end

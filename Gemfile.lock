@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/sporkrb/spork-testunit
+  revision: 349119cd1518564ab00731739078eee95b93934f
+  specs:
+    spork-testunit (0.0.7)
+      spork (>= 0.6.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -97,9 +104,7 @@ GEM
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.7.0)
     sass (3.1.12)
-    spork (0.8.5)
-    spork-testunit (0.0.7)
-      spork (>= 0.6.0)
+    spork (0.9.0.rc9)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -128,7 +133,7 @@ DEPENDENCIES
   rmagick (= 2.13.1)
   rspec
   sass
-  spork
-  spork-testunit
+  spork (~> 0.9.0.rc)
+  spork-testunit!
   sqlite3
   uglifier
