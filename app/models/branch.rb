@@ -6,8 +6,8 @@ class Branch < ActiveRecord::Base
   end
   
   def wait_times_for_date(year, month, day)
-    start = Time.new(year, month, day)
-    wait_times_in_range()
+    d = DateTime.new(year, month, day)
+    wait_times_in_range(d.beginning_of_day, d.end_of_day)
   end
   
   def wait_times_for_month(month, year = nil)
