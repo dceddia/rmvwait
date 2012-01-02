@@ -2,899 +2,899 @@
   id: 1
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-05T09:00:00-05:00
+  reported_at: 2011-12-05T14:00:00+00:00
   duration: 111
 20111205_1_0_1_licensing:
   id: 2
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-05T11:00:00-05:00
+  reported_at: 2011-12-05T16:00:00+00:00
   duration: 112
 20111205_1_0_2_licensing:
   id: 3
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-05T12:00:00-05:00
+  reported_at: 2011-12-05T17:00:00+00:00
   duration: 113
 20111205_1_0_3_licensing:
   id: 4
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-05T14:00:00-05:00
+  reported_at: 2011-12-05T19:00:00+00:00
   duration: 114
 20111205_1_0_4_licensing:
   id: 5
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-05T16:30:00-05:00
+  reported_at: 2011-12-05T21:30:00+00:00
   duration: 115
 20111205_1_0_0_registration:
   id: 6
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-05T09:00:00-05:00
+  reported_at: 2011-12-05T14:00:00+00:00
   duration: 111
 20111205_1_0_1_registration:
   id: 7
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-05T11:00:00-05:00
+  reported_at: 2011-12-05T16:00:00+00:00
   duration: 112
 20111205_1_0_2_registration:
   id: 8
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-05T12:00:00-05:00
+  reported_at: 2011-12-05T17:00:00+00:00
   duration: 113
 20111205_1_0_3_registration:
   id: 9
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-05T14:00:00-05:00
+  reported_at: 2011-12-05T19:00:00+00:00
   duration: 114
 20111205_1_0_4_registration:
   id: 10
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-05T16:30:00-05:00
+  reported_at: 2011-12-05T21:30:00+00:00
   duration: 115
 20111206_1_1_0_licensing:
   id: 11
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-06T09:00:00-05:00
+  reported_at: 2011-12-06T14:00:00+00:00
   duration: 211
 20111206_1_1_1_licensing:
   id: 12
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-06T11:00:00-05:00
+  reported_at: 2011-12-06T16:00:00+00:00
   duration: 212
 20111206_1_1_2_licensing:
   id: 13
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-06T12:00:00-05:00
+  reported_at: 2011-12-06T17:00:00+00:00
   duration: 213
 20111206_1_1_3_licensing:
   id: 14
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-06T14:00:00-05:00
+  reported_at: 2011-12-06T19:00:00+00:00
   duration: 214
 20111206_1_1_4_licensing:
   id: 15
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-06T16:30:00-05:00
+  reported_at: 2011-12-06T21:30:00+00:00
   duration: 215
 20111206_1_1_0_registration:
   id: 16
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-06T09:00:00-05:00
+  reported_at: 2011-12-06T14:00:00+00:00
   duration: 211
 20111206_1_1_1_registration:
   id: 17
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-06T11:00:00-05:00
+  reported_at: 2011-12-06T16:00:00+00:00
   duration: 212
 20111206_1_1_2_registration:
   id: 18
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-06T12:00:00-05:00
+  reported_at: 2011-12-06T17:00:00+00:00
   duration: 213
 20111206_1_1_3_registration:
   id: 19
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-06T14:00:00-05:00
+  reported_at: 2011-12-06T19:00:00+00:00
   duration: 214
 20111206_1_1_4_registration:
   id: 20
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-06T16:30:00-05:00
+  reported_at: 2011-12-06T21:30:00+00:00
   duration: 215
 20111207_1_2_0_licensing:
   id: 21
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-07T09:00:00-05:00
+  reported_at: 2011-12-07T14:00:00+00:00
   duration: 311
 20111207_1_2_1_licensing:
   id: 22
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-07T11:00:00-05:00
+  reported_at: 2011-12-07T16:00:00+00:00
   duration: 312
 20111207_1_2_2_licensing:
   id: 23
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-07T12:00:00-05:00
+  reported_at: 2011-12-07T17:00:00+00:00
   duration: 313
 20111207_1_2_3_licensing:
   id: 24
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-07T14:00:00-05:00
+  reported_at: 2011-12-07T19:00:00+00:00
   duration: 314
 20111207_1_2_4_licensing:
   id: 25
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-07T16:30:00-05:00
+  reported_at: 2011-12-07T21:30:00+00:00
   duration: 315
 20111207_1_2_0_registration:
   id: 26
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-07T09:00:00-05:00
+  reported_at: 2011-12-07T14:00:00+00:00
   duration: 311
 20111207_1_2_1_registration:
   id: 27
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-07T11:00:00-05:00
+  reported_at: 2011-12-07T16:00:00+00:00
   duration: 312
 20111207_1_2_2_registration:
   id: 28
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-07T12:00:00-05:00
+  reported_at: 2011-12-07T17:00:00+00:00
   duration: 313
 20111207_1_2_3_registration:
   id: 29
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-07T14:00:00-05:00
+  reported_at: 2011-12-07T19:00:00+00:00
   duration: 314
 20111207_1_2_4_registration:
   id: 30
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-07T16:30:00-05:00
+  reported_at: 2011-12-07T21:30:00+00:00
   duration: 315
 20111208_1_3_0_licensing:
   id: 31
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-08T09:00:00-05:00
+  reported_at: 2011-12-08T14:00:00+00:00
   duration: 411
 20111208_1_3_1_licensing:
   id: 32
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-08T11:00:00-05:00
+  reported_at: 2011-12-08T16:00:00+00:00
   duration: 412
 20111208_1_3_2_licensing:
   id: 33
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-08T12:00:00-05:00
+  reported_at: 2011-12-08T17:00:00+00:00
   duration: 413
 20111208_1_3_3_licensing:
   id: 34
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-08T14:00:00-05:00
+  reported_at: 2011-12-08T19:00:00+00:00
   duration: 414
 20111208_1_3_4_licensing:
   id: 35
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-08T16:30:00-05:00
+  reported_at: 2011-12-08T21:30:00+00:00
   duration: 415
 20111208_1_3_0_registration:
   id: 36
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-08T09:00:00-05:00
+  reported_at: 2011-12-08T14:00:00+00:00
   duration: 411
 20111208_1_3_1_registration:
   id: 37
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-08T11:00:00-05:00
+  reported_at: 2011-12-08T16:00:00+00:00
   duration: 412
 20111208_1_3_2_registration:
   id: 38
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-08T12:00:00-05:00
+  reported_at: 2011-12-08T17:00:00+00:00
   duration: 413
 20111208_1_3_3_registration:
   id: 39
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-08T14:00:00-05:00
+  reported_at: 2011-12-08T19:00:00+00:00
   duration: 414
 20111208_1_3_4_registration:
   id: 40
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-08T16:30:00-05:00
+  reported_at: 2011-12-08T21:30:00+00:00
   duration: 415
 20111209_1_4_0_licensing:
   id: 41
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-09T09:00:00-05:00
+  reported_at: 2011-12-09T14:00:00+00:00
   duration: 511
 20111209_1_4_1_licensing:
   id: 42
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-09T11:00:00-05:00
+  reported_at: 2011-12-09T16:00:00+00:00
   duration: 512
 20111209_1_4_2_licensing:
   id: 43
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-09T12:00:00-05:00
+  reported_at: 2011-12-09T17:00:00+00:00
   duration: 513
 20111209_1_4_3_licensing:
   id: 44
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-09T14:00:00-05:00
+  reported_at: 2011-12-09T19:00:00+00:00
   duration: 514
 20111209_1_4_4_licensing:
   id: 45
   branch_id: 1
   kind: licensing
-  reported_at: 2011-12-09T16:30:00-05:00
+  reported_at: 2011-12-09T21:30:00+00:00
   duration: 515
 20111209_1_4_0_registration:
   id: 46
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-09T09:00:00-05:00
+  reported_at: 2011-12-09T14:00:00+00:00
   duration: 511
 20111209_1_4_1_registration:
   id: 47
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-09T11:00:00-05:00
+  reported_at: 2011-12-09T16:00:00+00:00
   duration: 512
 20111209_1_4_2_registration:
   id: 48
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-09T12:00:00-05:00
+  reported_at: 2011-12-09T17:00:00+00:00
   duration: 513
 20111209_1_4_3_registration:
   id: 49
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-09T14:00:00-05:00
+  reported_at: 2011-12-09T19:00:00+00:00
   duration: 514
 20111209_1_4_4_registration:
   id: 50
   branch_id: 1
   kind: registration
-  reported_at: 2011-12-09T16:30:00-05:00
+  reported_at: 2011-12-09T21:30:00+00:00
   duration: 515
 20111205_2_0_0_licensing:
   id: 51
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-05T09:00:00-05:00
+  reported_at: 2011-12-05T14:00:00+00:00
   duration: 121
 20111205_2_0_1_licensing:
   id: 52
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-05T11:00:00-05:00
+  reported_at: 2011-12-05T16:00:00+00:00
   duration: 122
 20111205_2_0_2_licensing:
   id: 53
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-05T12:00:00-05:00
+  reported_at: 2011-12-05T17:00:00+00:00
   duration: 123
 20111205_2_0_3_licensing:
   id: 54
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-05T14:00:00-05:00
+  reported_at: 2011-12-05T19:00:00+00:00
   duration: 124
 20111205_2_0_4_licensing:
   id: 55
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-05T16:30:00-05:00
+  reported_at: 2011-12-05T21:30:00+00:00
   duration: 125
 20111205_2_0_0_registration:
   id: 56
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-05T09:00:00-05:00
+  reported_at: 2011-12-05T14:00:00+00:00
   duration: 121
 20111205_2_0_1_registration:
   id: 57
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-05T11:00:00-05:00
+  reported_at: 2011-12-05T16:00:00+00:00
   duration: 122
 20111205_2_0_2_registration:
   id: 58
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-05T12:00:00-05:00
+  reported_at: 2011-12-05T17:00:00+00:00
   duration: 123
 20111205_2_0_3_registration:
   id: 59
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-05T14:00:00-05:00
+  reported_at: 2011-12-05T19:00:00+00:00
   duration: 124
 20111205_2_0_4_registration:
   id: 60
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-05T16:30:00-05:00
+  reported_at: 2011-12-05T21:30:00+00:00
   duration: 125
 20111206_2_1_0_licensing:
   id: 61
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-06T09:00:00-05:00
+  reported_at: 2011-12-06T14:00:00+00:00
   duration: 221
 20111206_2_1_1_licensing:
   id: 62
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-06T11:00:00-05:00
+  reported_at: 2011-12-06T16:00:00+00:00
   duration: 222
 20111206_2_1_2_licensing:
   id: 63
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-06T12:00:00-05:00
+  reported_at: 2011-12-06T17:00:00+00:00
   duration: 223
 20111206_2_1_3_licensing:
   id: 64
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-06T14:00:00-05:00
+  reported_at: 2011-12-06T19:00:00+00:00
   duration: 224
 20111206_2_1_4_licensing:
   id: 65
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-06T16:30:00-05:00
+  reported_at: 2011-12-06T21:30:00+00:00
   duration: 225
 20111206_2_1_0_registration:
   id: 66
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-06T09:00:00-05:00
+  reported_at: 2011-12-06T14:00:00+00:00
   duration: 221
 20111206_2_1_1_registration:
   id: 67
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-06T11:00:00-05:00
+  reported_at: 2011-12-06T16:00:00+00:00
   duration: 222
 20111206_2_1_2_registration:
   id: 68
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-06T12:00:00-05:00
+  reported_at: 2011-12-06T17:00:00+00:00
   duration: 223
 20111206_2_1_3_registration:
   id: 69
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-06T14:00:00-05:00
+  reported_at: 2011-12-06T19:00:00+00:00
   duration: 224
 20111206_2_1_4_registration:
   id: 70
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-06T16:30:00-05:00
+  reported_at: 2011-12-06T21:30:00+00:00
   duration: 225
 20111207_2_2_0_licensing:
   id: 71
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-07T09:00:00-05:00
+  reported_at: 2011-12-07T14:00:00+00:00
   duration: 321
 20111207_2_2_1_licensing:
   id: 72
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-07T11:00:00-05:00
+  reported_at: 2011-12-07T16:00:00+00:00
   duration: 322
 20111207_2_2_2_licensing:
   id: 73
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-07T12:00:00-05:00
+  reported_at: 2011-12-07T17:00:00+00:00
   duration: 323
 20111207_2_2_3_licensing:
   id: 74
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-07T14:00:00-05:00
+  reported_at: 2011-12-07T19:00:00+00:00
   duration: 324
 20111207_2_2_4_licensing:
   id: 75
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-07T16:30:00-05:00
+  reported_at: 2011-12-07T21:30:00+00:00
   duration: 325
 20111207_2_2_0_registration:
   id: 76
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-07T09:00:00-05:00
+  reported_at: 2011-12-07T14:00:00+00:00
   duration: 321
 20111207_2_2_1_registration:
   id: 77
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-07T11:00:00-05:00
+  reported_at: 2011-12-07T16:00:00+00:00
   duration: 322
 20111207_2_2_2_registration:
   id: 78
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-07T12:00:00-05:00
+  reported_at: 2011-12-07T17:00:00+00:00
   duration: 323
 20111207_2_2_3_registration:
   id: 79
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-07T14:00:00-05:00
+  reported_at: 2011-12-07T19:00:00+00:00
   duration: 324
 20111207_2_2_4_registration:
   id: 80
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-07T16:30:00-05:00
+  reported_at: 2011-12-07T21:30:00+00:00
   duration: 325
 20111208_2_3_0_licensing:
   id: 81
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-08T09:00:00-05:00
+  reported_at: 2011-12-08T14:00:00+00:00
   duration: 421
 20111208_2_3_1_licensing:
   id: 82
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-08T11:00:00-05:00
+  reported_at: 2011-12-08T16:00:00+00:00
   duration: 422
 20111208_2_3_2_licensing:
   id: 83
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-08T12:00:00-05:00
+  reported_at: 2011-12-08T17:00:00+00:00
   duration: 423
 20111208_2_3_3_licensing:
   id: 84
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-08T14:00:00-05:00
+  reported_at: 2011-12-08T19:00:00+00:00
   duration: 424
 20111208_2_3_4_licensing:
   id: 85
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-08T16:30:00-05:00
+  reported_at: 2011-12-08T21:30:00+00:00
   duration: 425
 20111208_2_3_0_registration:
   id: 86
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-08T09:00:00-05:00
+  reported_at: 2011-12-08T14:00:00+00:00
   duration: 421
 20111208_2_3_1_registration:
   id: 87
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-08T11:00:00-05:00
+  reported_at: 2011-12-08T16:00:00+00:00
   duration: 422
 20111208_2_3_2_registration:
   id: 88
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-08T12:00:00-05:00
+  reported_at: 2011-12-08T17:00:00+00:00
   duration: 423
 20111208_2_3_3_registration:
   id: 89
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-08T14:00:00-05:00
+  reported_at: 2011-12-08T19:00:00+00:00
   duration: 424
 20111208_2_3_4_registration:
   id: 90
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-08T16:30:00-05:00
+  reported_at: 2011-12-08T21:30:00+00:00
   duration: 425
 20111209_2_4_0_licensing:
   id: 91
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-09T09:00:00-05:00
+  reported_at: 2011-12-09T14:00:00+00:00
   duration: 521
 20111209_2_4_1_licensing:
   id: 92
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-09T11:00:00-05:00
+  reported_at: 2011-12-09T16:00:00+00:00
   duration: 522
 20111209_2_4_2_licensing:
   id: 93
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-09T12:00:00-05:00
+  reported_at: 2011-12-09T17:00:00+00:00
   duration: 523
 20111209_2_4_3_licensing:
   id: 94
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-09T14:00:00-05:00
+  reported_at: 2011-12-09T19:00:00+00:00
   duration: 524
 20111209_2_4_4_licensing:
   id: 95
   branch_id: 2
   kind: licensing
-  reported_at: 2011-12-09T16:30:00-05:00
+  reported_at: 2011-12-09T21:30:00+00:00
   duration: 525
 20111209_2_4_0_registration:
   id: 96
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-09T09:00:00-05:00
+  reported_at: 2011-12-09T14:00:00+00:00
   duration: 521
 20111209_2_4_1_registration:
   id: 97
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-09T11:00:00-05:00
+  reported_at: 2011-12-09T16:00:00+00:00
   duration: 522
 20111209_2_4_2_registration:
   id: 98
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-09T12:00:00-05:00
+  reported_at: 2011-12-09T17:00:00+00:00
   duration: 523
 20111209_2_4_3_registration:
   id: 99
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-09T14:00:00-05:00
+  reported_at: 2011-12-09T19:00:00+00:00
   duration: 524
 20111209_2_4_4_registration:
   id: 100
   branch_id: 2
   kind: registration
-  reported_at: 2011-12-09T16:30:00-05:00
+  reported_at: 2011-12-09T21:30:00+00:00
   duration: 525
 20111205_3_0_0_licensing:
   id: 101
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-05T09:00:00-05:00
+  reported_at: 2011-12-05T14:00:00+00:00
   duration: 131
 20111205_3_0_1_licensing:
   id: 102
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-05T11:00:00-05:00
+  reported_at: 2011-12-05T16:00:00+00:00
   duration: 132
 20111205_3_0_2_licensing:
   id: 103
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-05T12:00:00-05:00
+  reported_at: 2011-12-05T17:00:00+00:00
   duration: 133
 20111205_3_0_3_licensing:
   id: 104
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-05T14:00:00-05:00
+  reported_at: 2011-12-05T19:00:00+00:00
   duration: 134
 20111205_3_0_4_licensing:
   id: 105
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-05T16:30:00-05:00
+  reported_at: 2011-12-05T21:30:00+00:00
   duration: 135
 20111205_3_0_0_registration:
   id: 106
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-05T09:00:00-05:00
+  reported_at: 2011-12-05T14:00:00+00:00
   duration: 131
 20111205_3_0_1_registration:
   id: 107
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-05T11:00:00-05:00
+  reported_at: 2011-12-05T16:00:00+00:00
   duration: 132
 20111205_3_0_2_registration:
   id: 108
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-05T12:00:00-05:00
+  reported_at: 2011-12-05T17:00:00+00:00
   duration: 133
 20111205_3_0_3_registration:
   id: 109
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-05T14:00:00-05:00
+  reported_at: 2011-12-05T19:00:00+00:00
   duration: 134
 20111205_3_0_4_registration:
   id: 110
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-05T16:30:00-05:00
+  reported_at: 2011-12-05T21:30:00+00:00
   duration: 135
 20111206_3_1_0_licensing:
   id: 111
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-06T09:00:00-05:00
+  reported_at: 2011-12-06T14:00:00+00:00
   duration: 231
 20111206_3_1_1_licensing:
   id: 112
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-06T11:00:00-05:00
+  reported_at: 2011-12-06T16:00:00+00:00
   duration: 232
 20111206_3_1_2_licensing:
   id: 113
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-06T12:00:00-05:00
+  reported_at: 2011-12-06T17:00:00+00:00
   duration: 233
 20111206_3_1_3_licensing:
   id: 114
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-06T14:00:00-05:00
+  reported_at: 2011-12-06T19:00:00+00:00
   duration: 234
 20111206_3_1_4_licensing:
   id: 115
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-06T16:30:00-05:00
+  reported_at: 2011-12-06T21:30:00+00:00
   duration: 235
 20111206_3_1_0_registration:
   id: 116
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-06T09:00:00-05:00
+  reported_at: 2011-12-06T14:00:00+00:00
   duration: 231
 20111206_3_1_1_registration:
   id: 117
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-06T11:00:00-05:00
+  reported_at: 2011-12-06T16:00:00+00:00
   duration: 232
 20111206_3_1_2_registration:
   id: 118
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-06T12:00:00-05:00
+  reported_at: 2011-12-06T17:00:00+00:00
   duration: 233
 20111206_3_1_3_registration:
   id: 119
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-06T14:00:00-05:00
+  reported_at: 2011-12-06T19:00:00+00:00
   duration: 234
 20111206_3_1_4_registration:
   id: 120
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-06T16:30:00-05:00
+  reported_at: 2011-12-06T21:30:00+00:00
   duration: 235
 20111207_3_2_0_licensing:
   id: 121
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-07T09:00:00-05:00
+  reported_at: 2011-12-07T14:00:00+00:00
   duration: 331
 20111207_3_2_1_licensing:
   id: 122
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-07T11:00:00-05:00
+  reported_at: 2011-12-07T16:00:00+00:00
   duration: 332
 20111207_3_2_2_licensing:
   id: 123
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-07T12:00:00-05:00
+  reported_at: 2011-12-07T17:00:00+00:00
   duration: 333
 20111207_3_2_3_licensing:
   id: 124
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-07T14:00:00-05:00
+  reported_at: 2011-12-07T19:00:00+00:00
   duration: 334
 20111207_3_2_4_licensing:
   id: 125
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-07T16:30:00-05:00
+  reported_at: 2011-12-07T21:30:00+00:00
   duration: 335
 20111207_3_2_0_registration:
   id: 126
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-07T09:00:00-05:00
+  reported_at: 2011-12-07T14:00:00+00:00
   duration: 331
 20111207_3_2_1_registration:
   id: 127
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-07T11:00:00-05:00
+  reported_at: 2011-12-07T16:00:00+00:00
   duration: 332
 20111207_3_2_2_registration:
   id: 128
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-07T12:00:00-05:00
+  reported_at: 2011-12-07T17:00:00+00:00
   duration: 333
 20111207_3_2_3_registration:
   id: 129
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-07T14:00:00-05:00
+  reported_at: 2011-12-07T19:00:00+00:00
   duration: 334
 20111207_3_2_4_registration:
   id: 130
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-07T16:30:00-05:00
+  reported_at: 2011-12-07T21:30:00+00:00
   duration: 335
 20111208_3_3_0_licensing:
   id: 131
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-08T09:00:00-05:00
+  reported_at: 2011-12-08T14:00:00+00:00
   duration: 431
 20111208_3_3_1_licensing:
   id: 132
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-08T11:00:00-05:00
+  reported_at: 2011-12-08T16:00:00+00:00
   duration: 432
 20111208_3_3_2_licensing:
   id: 133
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-08T12:00:00-05:00
+  reported_at: 2011-12-08T17:00:00+00:00
   duration: 433
 20111208_3_3_3_licensing:
   id: 134
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-08T14:00:00-05:00
+  reported_at: 2011-12-08T19:00:00+00:00
   duration: 434
 20111208_3_3_4_licensing:
   id: 135
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-08T16:30:00-05:00
+  reported_at: 2011-12-08T21:30:00+00:00
   duration: 435
 20111208_3_3_0_registration:
   id: 136
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-08T09:00:00-05:00
+  reported_at: 2011-12-08T14:00:00+00:00
   duration: 431
 20111208_3_3_1_registration:
   id: 137
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-08T11:00:00-05:00
+  reported_at: 2011-12-08T16:00:00+00:00
   duration: 432
 20111208_3_3_2_registration:
   id: 138
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-08T12:00:00-05:00
+  reported_at: 2011-12-08T17:00:00+00:00
   duration: 433
 20111208_3_3_3_registration:
   id: 139
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-08T14:00:00-05:00
+  reported_at: 2011-12-08T19:00:00+00:00
   duration: 434
 20111208_3_3_4_registration:
   id: 140
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-08T16:30:00-05:00
+  reported_at: 2011-12-08T21:30:00+00:00
   duration: 435
 20111209_3_4_0_licensing:
   id: 141
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-09T09:00:00-05:00
+  reported_at: 2011-12-09T14:00:00+00:00
   duration: 531
 20111209_3_4_1_licensing:
   id: 142
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-09T11:00:00-05:00
+  reported_at: 2011-12-09T16:00:00+00:00
   duration: 532
 20111209_3_4_2_licensing:
   id: 143
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-09T12:00:00-05:00
+  reported_at: 2011-12-09T17:00:00+00:00
   duration: 533
 20111209_3_4_3_licensing:
   id: 144
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-09T14:00:00-05:00
+  reported_at: 2011-12-09T19:00:00+00:00
   duration: 534
 20111209_3_4_4_licensing:
   id: 145
   branch_id: 3
   kind: licensing
-  reported_at: 2011-12-09T16:30:00-05:00
+  reported_at: 2011-12-09T21:30:00+00:00
   duration: 535
 20111209_3_4_0_registration:
   id: 146
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-09T09:00:00-05:00
+  reported_at: 2011-12-09T14:00:00+00:00
   duration: 531
 20111209_3_4_1_registration:
   id: 147
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-09T11:00:00-05:00
+  reported_at: 2011-12-09T16:00:00+00:00
   duration: 532
 20111209_3_4_2_registration:
   id: 148
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-09T12:00:00-05:00
+  reported_at: 2011-12-09T17:00:00+00:00
   duration: 533
 20111209_3_4_3_registration:
   id: 149
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-09T14:00:00-05:00
+  reported_at: 2011-12-09T19:00:00+00:00
   duration: 534
 20111209_3_4_4_registration:
   id: 150
   branch_id: 3
   kind: registration
-  reported_at: 2011-12-09T16:30:00-05:00
+  reported_at: 2011-12-09T21:30:00+00:00
   duration: 535

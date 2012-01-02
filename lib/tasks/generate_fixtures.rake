@@ -31,7 +31,7 @@ class WaitTimeFixtureGenerator
             wait_times_file.puts "  id: #{wt_id}"
             wait_times_file.puts "  branch_id: #{id}"
             wait_times_file.puts "  kind: #{kind}"
-            wait_times_file.puts "  reported_at: #{reported_at}"
+            wait_times_file.puts "  reported_at: #{reported_at.utc}"
             wait_times_file.puts "  duration: #{duration}"
             wt_id += 1
           end
