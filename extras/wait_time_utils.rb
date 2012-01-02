@@ -27,7 +27,7 @@ module WaitTimeUtils
     
     class DiscardMalformedLine < DiscardFilter
       def should_discard?(line)
-        (line !~ /^[A-Z].*20\d\d$/ || line.split("|").length != 5) ? true : false
+        (line !~ /^[A-Z]/ || line.count("|") != 4) ? true : false
       end
     end
 
@@ -64,6 +64,16 @@ module WaitTimeUtils
       end
     end
     
+    class ChangeTimeToUTC
+      def modify(line)
+        branch, lic, reg, reported_time, retrieved_time = line.split("|")
+        retrieved_at = DateTime.parse(retrieved_time)
+        reported_at = retrieved_at.change(:hour => DateTime.parse(reported_time).hour,
+                                          :min => DateTime.parse(reported_time).min)
+        "#{branch}|#{lic}|#{reg}|#{reported_at.utc.to_s}|#{retrieved_at.utc.to_s}"
+      end
+    end
+    
     class FixOct17_18_19_20_24
       def modify(line)
         branch, lic, reg, reported_time, retrieved_time = line.split("|")
@@ -75,7 +85,7 @@ module WaitTimeUtils
         reported_at = retrieved_at.change(:hour => DateTime.parse(reported_time).hour,
                                           :min => DateTime.parse(reported_time).min)
         fixed_time = reported_at + Rational(5,24)
-        new_line = "#{branch}|#{lic}|#{reg}|#{fixed_time.strftime("%l:%M %p").strip}|#{retrieved_time}"
+        new_line = "#{branch}|#{lic}|#{reg}|#{fixed_time.utc.to_s}|#{retrieved_time}"
         #puts "'#{line}' => '#{new_line}'"
         return new_line
       end
@@ -87,6 +97,7 @@ module WaitTimeUtils
       @filters = []
       @filters << WaitTimeFilters::DiscardMalformedLine.new \
                << WaitTimeFilters::DiscardBadStatusLine.new \
+               << WaitTimeFilters::ChangeTimeToUTC.new \
                << WaitTimeFilters::DiscardSameAsLast.new \
                << WaitTimeFilters::FixOct17_18_19_20_24.new \
                << WaitTimeFilters::DiscardFutureAndPastReports.new

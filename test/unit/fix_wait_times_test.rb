@@ -16,17 +16,30 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   def good_line
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:46 PM|Wed Aug 31 15:48:59 -0400 2011"
   end
-  
+ 
+  def good_line_utc
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:46:00+00:00|2011-08-31T19:48:59+00:00"
+  end
+   
   def good_line_elsewhere
     "Boston|5 minutes, 34 seconds|13 minutes, 8 seconds|3:46 PM|Wed Aug 31 15:48:59 -0400 2011"
   end
-   
+  def good_line_elsewhere_utc
+    "Boston|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:46:00+00:00|2011-08-31T19:48:59+00:00"
+  end   
+  
   def good_line_earlier
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:45 PM|Wed Aug 31 15:48:59 -0400 2011"
   end
-
+  def good_line_earlier_utc
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:45:00+00:00|2011-08-31T19:48:59+00:00"
+  end
+  
   def good_line_later
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:47 PM|Wed Aug 31 15:48:59 -0400 2011"
+  end
+  def good_line_later_utc
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:47:00+00:00|2011-08-31T19:48:59+00:00"
   end
     
   def too_far_past_line
@@ -40,11 +53,17 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   def not_too_far_past_line
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:10 PM|Wed Aug 31 15:30:00 -0400 2011"
   end
+  def not_too_far_past_line_utc
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:10:00+00:00|2011-08-31T19:30:00+00:00"
+  end
   
   def not_too_far_future_line
     "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:15 PM|Wed Aug 31 15:14:00 -0400 2011"
   end
-  
+  def not_too_far_future_line_utc
+    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:15:00+00:00|2011-08-31T19:14:00+00:00"
+  end
+    
   def line_with_n_fields(n)
     str = ""
     n.times do |i|
@@ -72,6 +91,14 @@ class FixWaitTimesTest < ActiveSupport::TestCase
     
     assert_equal false, f.should_discard?(good_line)
     assert_equal false, f.should_discard?(bad_line) # DiscardMalformedLine should handle this
+  end
+  
+  test "ChangeTimeToUTC filter" do
+    f = WaitTimeUtils::WaitTimeFilters::ChangeTimeToUTC.new
+    orig = "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|3:46 PM|Wed Aug 31 15:48:59 -0400 2011"
+    fixed = "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:46:00+00:00|2011-08-31T19:48:59+00:00"
+    actual = f.modify(orig)
+    assert_equal fixed, actual
   end
   
   test "DiscardSameAsLast filter simple duplicate" do
@@ -116,8 +143,9 @@ class FixWaitTimesTest < ActiveSupport::TestCase
     lines = []
     days = [17, 18, 19, 20, 24]
     days.each do |day|
-      date_string = DateTime.new(2011, 10, day, 10, 30, 00, Rational(4, 24)).to_s
-      lines << "Boston|1 hour|1 hour|5:24 AM|#{date_string}"
+      reported_at = DateTime.new(2011, 10, day, 5, 24, 00, Rational(4, 24))
+      retrieved_at = DateTime.new(2011, 10, day, 10, 30, 00, Rational(4, 24))
+      lines << "Boston|1 hour|1 hour|#{reported_at.utc}|#{retrieved_at.utc}"
     end
     lines
   end
@@ -136,12 +164,12 @@ class FixWaitTimesTest < ActiveSupport::TestCase
     f = WaitTimeUtils::WaitTimeFilters::FixOct17_18_19_20_24.new
     examples = []
     # one year later
-    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2012, 10, 17, 10, 30, 00, Rational(4,24)).to_s}"
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2012, 10, 17, 10, 30, 00, Rational(4,24))}"
     # one year before
-    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2010, 10, 17, 10, 30, 00, Rational(4,24)).to_s}"
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2010, 10, 17, 10, 30, 00, Rational(4,24))}"
     # unaffected days
-    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2011, 10, 16, 10, 30, 00, Rational(4,24)).to_s}"
-    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2011, 10, 21, 10, 30, 00, Rational(4,24)).to_s}"
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2011, 10, 16, 10, 30, 00, Rational(4,24))}"
+    examples << "Boston|1 hour|1 hour|5:24 AM|#{DateTime.new(2011, 10, 21, 10, 30, 00, Rational(4,24))}"
     
     examples.each do |ex|
       t1 = Time.parse(ex.split("|")[3])
@@ -154,7 +182,7 @@ class FixWaitTimesTest < ActiveSupport::TestCase
     f = WaitTimeUtils::WaitTimeFixer.new
     
     # Normal operation
-    assert_equal good_line, f.parse_line(good_line)
+    assert_equal good_line_utc, f.parse_line(good_line)
     
     # Throw out bad lines
     assert_nil f.parse_line(bad_line)
@@ -164,24 +192,34 @@ class FixWaitTimesTest < ActiveSupport::TestCase
   
     # Try a real October time
     oct_orig = "Worcester|No wait time|6 minutes, 44 seconds|2:57 AM|Mon Oct 24 08:10:09 -0400 2011"
-    oct_fixed = "Worcester|No wait time|6 minutes, 44 seconds|7:57 AM|Mon Oct 24 08:10:09 -0400 2011"
+    oct_fixed = "Worcester|No wait time|6 minutes, 44 seconds|2011-10-24T11:57:00+00:00|2011-10-24T12:10:09+00:00"
     assert_equal oct_fixed, f.parse_line(oct_orig)
   
-
     # Try another real October time
     oct_orig = "Brockton|No wait time|No wait time|3:19 AM|Wed Oct 19 08:32:15 -0400 2011"
-    oct_fixed = "Brockton|No wait time|No wait time|8:19 AM|Wed Oct 19 08:32:15 -0400 2011"
+    oct_fixed = "Brockton|No wait time|No wait time|2011-10-19T12:19:00+00:00|2011-10-19T12:32:15+00:00"
     assert_equal oct_fixed, f.parse_line(oct_orig)
     
     # Try everything else
     assert_nil f.parse_line(tech_difficulties_line)
     assert_nil f.parse_line(closed_line)
-    assert_equal good_line_elsewhere, f.parse_line(good_line_elsewhere)
-    assert_equal good_line_earlier, f.parse_line(good_line_earlier)
-    assert_equal good_line_later, f.parse_line(good_line_later)
+    assert_equal good_line_elsewhere_utc, f.parse_line(good_line_elsewhere)
+    assert_equal good_line_earlier_utc, f.parse_line(good_line_earlier)
+    assert_equal good_line_later_utc, f.parse_line(good_line_later)
     assert_nil f.parse_line(too_far_past_line)
     assert_nil f.parse_line(too_far_future_line)
-    assert_equal not_too_far_past_line, f.parse_line(not_too_far_past_line)
-    assert_equal not_too_far_future_line, f.parse_line(not_too_far_future_line)
+    assert_equal not_too_far_past_line_utc, f.parse_line(not_too_far_past_line)
+    assert_equal not_too_far_future_line_utc, f.parse_line(not_too_far_future_line)
+  end
+  
+  test "Fix some times that are already in UTC" do
+    f = WaitTimeUtils::WaitTimeFixer.new
+    
+    # Try some that are already in UTC
+    assert_equal good_line_utc, f.parse_line(good_line_utc)
+    assert_nil f.parse_line(good_line_utc) # duplicate
+    assert_equal good_line_elsewhere_utc, f.parse_line(good_line_elsewhere_utc)
+    assert_equal good_line_earlier_utc, f.parse_line(good_line_earlier_utc)
+    assert_equal good_line_later_utc, f.parse_line(good_line_later_utc)
   end
 end
