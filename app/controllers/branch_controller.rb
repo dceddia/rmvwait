@@ -29,10 +29,11 @@ class BranchController < ApplicationController
     require 'gruff'
     @branch = Branch.find_by_name(params[:name])
     
-    licensing, registration = @branch.wait_times.where("reported_at >= ? AND reported_at <= ?", 
-      Date.from_param(params[:start_date]),
-      Date.from_param(params[:end_date]))
+    @licensing, @registration = @branch.wait_times_in_range(
+      Date.from_param(params[:start_date]).beginning_of_day,
+      Date.from_param(params[:end_date]).end_of_day)
 
+=begin
     g = Gruff::Line.new
     g.title = "#{@branch.human_name} Wait Times (requested date)"
     g.data("Registration", registration)
@@ -40,5 +41,6 @@ class BranchController < ApplicationController
     filename = "registration.png"
     g.write(filename)
     send_file filename, :type => 'image/png', :disposition => 'inline'
+=end
   end
 end

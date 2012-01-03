@@ -1,0 +1,7 @@
+You selected these times:
+
+<table>
+<% @registration.each do |r| %>
+  <tr><td><%= r.branch.human_name %></td><td><%= r.duration %></td></tr>
+<% end %>
+</table>
