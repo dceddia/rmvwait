@@ -14,7 +14,7 @@ class LoadWaitTimesTest < ActiveSupport::TestCase
   end
   
   def good_line_utc
-    "Springfield|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:46:00+00:00|2011-08-31T19:48:59+00:00"
+    "Watertown|5 minutes, 34 seconds|13 minutes, 8 seconds|2011-08-31T19:46:00+00:00|2011-08-31T19:48:59+00:00"
   end
   
   def good_line_elsewhere_utc
@@ -29,10 +29,12 @@ class LoadWaitTimesTest < ActiveSupport::TestCase
     reported_at = DateTime.parse(retrieved_at).change(:hour => reported_time.hour, 
                                                       :min => reported_time.min).utc
     branch = Branch.where(:human_name => branch_name).first
+    assert branch == wait_time.branch
+    assert reported_at == wait_time.reported_at
     if kind == :licensing
-      return branch == wait_time.branch && licensing_duration == wait_time.duration && reported_at == wait_time.reported_at
+      assert licensing_duration == wait_time.duration
     elsif kind == :duration
-      return branch == wait_time.branch && registration_duration == wait_time.duration && reported_at == wait_time.reported_at
+      assert registration_duration == wait_time.duration
     end
   end
   

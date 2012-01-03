@@ -158,8 +158,8 @@ module WaitTimeUtils
       
       branch, licensing_duration, registration_duration, reported_at, retrieved_at = parse_line(line)
 
-      @wait_times << [branch.object_id, licensing_duration, reported_at, :licensing]
-      @wait_times << [branch.object_id, registration_duration, reported_at, :registration]
+      @wait_times << [branch.id, licensing_duration, reported_at, :licensing]
+      @wait_times << [branch.id, registration_duration, reported_at, :registration]
       send_batch
       true
     end
@@ -178,7 +178,7 @@ module WaitTimeUtils
     def load_file(file)
       lines_total = lines_loaded = 0
       IO.foreach(file) do |line|
-        lines_loaded += 1 if load_line(line)
+        lines_loaded += 1 if load_line(line.strip)
         lines_total += 1
         if (lines_total % 1000 == 0)
           puts "Loaded %d / %d" % [lines_loaded, lines_total]
