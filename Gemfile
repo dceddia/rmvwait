@@ -17,6 +17,7 @@ gem 'gruff', '0.3.6'
 gem 'delayed_job', '2.1.4'
 gem 'rmagick', '2.13.1', :require => false
 gem "activerecord-import", ">= 0.2.0"
+gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
