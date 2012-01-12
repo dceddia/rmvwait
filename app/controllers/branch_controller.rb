@@ -28,10 +28,12 @@ class BranchController < ApplicationController
   def graph
     require 'gruff'
     @branch = Branch.find_by_name(params[:name])
-    
     @licensing, @registration = @branch.wait_times_in_range(
       Date.from_param(params[:start_date]).beginning_of_day,
       Date.from_param(params[:end_date]).end_of_day)
+
+    @licensing_graph = @licensing.inject([]) { |memo, l| memo << [l.reported_at_js_local, l.duration] }.to_json
+    @registration_graph = @registration.inject([]) { |memo, l| memo << [l.reported_at_js_local, l.duration] }.to_json
 
 =begin
     g = Gruff::Line.new
@@ -43,4 +45,8 @@ class BranchController < ApplicationController
     send_file filename, :type => 'image/png', :disposition => 'inline'
 =end
   end
+  
+  private
+  
+  def 
 end

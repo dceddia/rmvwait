@@ -1,7 +1,22 @@
-You selected these times:
+Graph:
 
+<div id="graph" style="width:600px;height:300px;"></div>
+<script>
+    $(function() {
+        var options = { xaxis: {
+                            mode: "time"
+                        }};
+        var data = [ { label: 'Licensing',
+                       data: <%= @licensing_graph %> },
+                     { label: 'Registration',
+                       data: <%= @registration_graph %> } ];
+        $.plot($("#graph"), data, options);
+    });
+</script>
+
+Raw times:
 <table>
 <% @registration.each do |r| %>
-  <tr><td><%= r.branch.human_name %></td><td><%= r.duration %></td></tr>
+  <tr><td><%= human_time_of_day(r.reported_at) %></td><td><%= seconds_to_human_duration(r.duration) %></td></tr>
 <% end %>
 </table>
