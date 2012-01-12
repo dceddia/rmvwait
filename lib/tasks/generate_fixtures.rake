@@ -11,8 +11,8 @@ class WaitTimeFixtureGenerator
   end
   
   def self.generate
-    wait_times_file = File.open("#{Rails.root.to_s}/test/fixtures/wait_times.yml", "w")
-    branch_file = "#{Rails.root.to_s}/test/fixtures/branches.yml"
+    wait_times_file = File.open("#{Rails.root.to_s}/spec/fixtures/wait_times.yml", "w")
+    branch_file = "#{Rails.root.to_s}/spec/fixtures/branches.yml"
     branches = YAML::load(File.open(branch_file))
     branch_ids = branches.inject({}) {|result, (k,v)| result[v["id"]] = v["name"]; result }
     month = 12
