@@ -40,6 +40,7 @@ gem 'jquery-rails'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber-rails'
   gem 'spork', '~> 0.9.0.rc'
-  gem 'spork-testunit', :git => 'https://github.com/sporkrb/spork-testunit'
 end
