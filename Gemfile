@@ -43,4 +43,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'guard'
+  gem 'guard-spork'
+  gem 'guard-rspec'
 end
