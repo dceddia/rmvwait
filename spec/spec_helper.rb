@@ -10,7 +10,8 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-
+  require 'helpers/wait_time_examples'
+  
   RSpec.configure do |config|
     # == Mock Framework
     #
